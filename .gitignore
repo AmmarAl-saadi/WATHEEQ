@@ -1,0 +1,34 @@
+# Dependencies
+watheeq/vendor/
+watheeq/node_modules/
+
+# Environment
+watheeq/.env
+watheeq/.env.backup
+watheeq/.env.production
+
+# Storage & Logs
+watheeq/storage/*.key
+watheeq/storage/logs/*.log
+watheeq/storage/framework/cache/*
+watheeq/storage/framework/sessions/*
+watheeq/storage/framework/views/*
+!watheeq/storage/framework/.gitignore
+
+# Build & Cache
+watheeq/public/build
+watheeq/public/hot
+watheeq/public/storage
+watheeq/.phpunit.result.cache
+
+# IDE & Editor folders
+.vscode/
+.idea/
+.cursor/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
+Desktop.ini
