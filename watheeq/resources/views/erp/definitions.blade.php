@@ -47,7 +47,10 @@
                     <span>• المفكرة</span>
                     <span class="text-[9px] text-gray-400">مهام</span>
                 </a>
-                <a href="{{ route('erp.customizer') }}" class="block p-1 rounded hover:bg-gray-50">• العملات وأسعار الصرف</a>
+                <a href="{{ route('erp.currencies') }}" class="block p-1 rounded hover:bg-gray-50 flex justify-between items-center">
+                    <span>• العملات وأسعار الصرف</span>
+                    <span class="text-[9px] text-[#1F2E4A] font-bold">صرف</span>
+                </a>
                 <a href="{{ route('erp.accounts') }}" class="block p-1 rounded hover:bg-gray-50">• الحالات والمراحل</a>
                 <a href="{{ route('erp.accounts') }}" class="block p-1 rounded hover:bg-gray-50">• الأرصدة الافتتاحية</a>
                 <a href="{{ route('erp.accounts') }}" class="block p-1 rounded hover:bg-gray-50">• رأس المال والشركاء</a>

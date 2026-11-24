@@ -558,6 +558,54 @@ class ErpController extends Controller
 
 
 
+    // Currencies Management (العملات وأسعار الصرف)
+    public function currencies()
+    {
+        $tenant = $this->getTenant();
+        $currencies = DB::table('currencies')
+            ->where('tenant_id', $tenant->id)
+            ->orderByDesc('is_primary')
+            ->orderBy('code')
+            ->get();
+
+        return view('erp.currencies', compact('tenant', 'currencies'));
+    }
+
+    public function storeCurrency(Request $request)
+    {
+        $tenant = $this->getTenant();
+        $validated = $request->validate([
+            'id' => 'nullable|integer',
+            'code' => 'required|string|max:10',
+            'name_ar' => 'required|string|max:100',
+            'name_en' => 'nullable|string|max:100',
+            'symbol' => 'required|string|max:10',
+            'exchange_rate' => 'required|numeric|min:0.000001'
+        ]);
+
+        $code = strtoupper(trim($validated['code']));
+        $data = [
+            'tenant_id' => $tenant->id,
+            'code' => $code,
+            'name_ar' => $validated['name_ar'],
+            'name_en' => $validated['name_en'] ?? null,
+            'symbol' => $validated['symbol'],
+            'exchange_rate' => $validated['exchange_rate'],
+            'updated_at' => now()
+        ];
+
+        if (!empty($validated['id'])) {
+            DB::table('currencies')->where('id', $validated['id'])->where('tenant_id', $tenant->id)->update($data);
+            $msg = 'تم تحديث سعر صرف العملة بنجاح!';
+        } else {
+            $data['created_at'] = now();
+            DB::table('currencies')->insert($data);
+            $msg = 'تمت إضافة العملة الجديدة إلى النظام بنجاح!';
+        }
+
+        return redirect()->route('erp.currencies')->with('success', $msg);
+    }
+
     // 1. Definitions Hub (تعريفات)
     public function definitions()
     {

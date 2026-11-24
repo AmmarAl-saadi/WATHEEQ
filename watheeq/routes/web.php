@@ -14,8 +14,10 @@ Route::match(['get', 'post'], '/logout', [AuthController::class, 'logout'])->nam
 // Page 0: Dashboard
 Route::get('/', [ErpController::class, 'dashboard'])->name('erp.dashboard');
 
-// Page 1: Definitions Hub & Sub-Screens
+// Definitions Hub & Sub-Screens
 Route::get('/definitions', [ErpController::class, 'definitions'])->name('erp.definitions');
+Route::get('/currencies', [ErpController::class, 'currencies'])->name('erp.currencies');
+Route::post('/currencies', [ErpController::class, 'storeCurrency'])->name('erp.currencies.store');
 Route::get('/price-lists', [ErpController::class, 'priceLists'])->name('erp.price_lists');
 Route::post('/price-lists', [ErpController::class, 'updatePriceLists'])->name('erp.price_lists.update');
 Route::get('/inventory/price-adjustment', [ErpController::class, 'priceAdjustmentEditor'])->name('erp.price_adjustment.editor');

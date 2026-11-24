@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'منظومة وثيق لإدارة الأعمال | Watheeq ERP')</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Local Fast Cached Tailwind Engine -->
+    <script src="/js/tailwind.js"></script>
+    <!-- Instant Page Prefetcher for Instant Navigation -->
+    <script src="/js/instantpage.js" type="module"></script>
     <!-- Offline Barcode & QR Scanner Engine (Zero Dependencies) -->
     <script src="/js/html5-qrcode.min.js"></script>
     <script src="/js/watheeq-scanner.js"></script>
@@ -262,7 +264,7 @@
         </div>
 
         <!-- Corporate Brand Header (Pure Executive Typography, Zero Icons) -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-2.5 flex justify-between items-center">
+        <div class="w-full px-4 sm:px-8 py-2.5 flex justify-between items-center">
             <!-- Brand Identity: Watheeq | وثيق -->
             <a href="{{ route('erp.dashboard') }}" class="block">
                 <div class="flex items-center gap-2">
@@ -340,7 +342,7 @@
 
     <!-- Master Navigation Mega-Menu (Dynamically Filtered by Current User Interface Permissions) -->
     <nav class="bg-white border-b border-[#E6E7E9] shadow-sm sticky top-[76px] z-20 no-print">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        <div class="w-full px-4 sm:px-8">
             <div class="flex items-center space-x-1 space-x-reverse overflow-x-auto py-2 no-scrollbar text-xs md:text-sm font-semibold">
                 @if(in_array('dashboard', $userModules))
                     <a href="{{ route('erp.dashboard') }}" class="px-3.5 py-2 rounded-lg transition {{ request()->routeIs('erp.dashboard') ? 'bg-[#1F2E4A] text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}">
@@ -406,7 +408,7 @@
     </nav>
 
     <!-- Master Layout Body with Clean Minimalist Sidebar -->
-    <div class="max-w-7xl w-full mx-auto px-4 sm:px-8 py-5 flex-1 flex flex-col lg:flex-row gap-6">
+    <div class="w-full px-4 sm:px-8 py-5 flex-1 flex flex-col lg:flex-row gap-6">
         <!-- Main Workspace Canvas -->
         <main class="flex-1 min-w-0">
             @if(session('success'))
@@ -506,7 +508,7 @@
 
     <!-- Footer in Corporate Palette -->
     <footer class="bg-[#1F2E4A] text-white/80 py-5 border-t-4 border-[#1F2E4A] mt-auto no-print">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs">
+        <div class="w-full px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs">
             <div>
                 <p class="font-semibold text-white">منظومة وثيق لإدارة الأعمال (Watheeq ERP) © {{ date('Y') }}</p>
                 <p class="text-[11px] text-[#CED4DA]">نظام محاسبي وإداري متكامل معتمد للامتثال الضريبي والفوترة الوطنية الأردنية</p>

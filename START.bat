@@ -25,5 +25,5 @@ echo Watheeq ERP Server is running. To stop it, close this window or run STOP.ba
 echo ========================================================
 echo.
 
-php artisan serve --port=8000
+php artisan serve --host=0.0.0.0 --port=8000
 pause
