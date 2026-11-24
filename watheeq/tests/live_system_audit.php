@@ -85,8 +85,8 @@ $csrfToken = $tokenMatch[1] ?? '';
 
 $loginPost = request($baseUrl . '/login', 'POST', [
     '_token' => $csrfToken,
-    'login' => 'admin',
-    'password' => 'admin123'
+    'login' => 'admin@dctechjo.com',
+    'password' => 'Omar1992$$'
 ], $cookieFile, true);
 
 if ($loginPost['code'] === 200 && str_ends_with(parse_url($loginPost['effective_url'], PHP_URL_PATH), '/')) {

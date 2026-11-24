@@ -28,8 +28,8 @@ class UserSeeder extends Seeder
             DB::table('users')->insert([
                 [
                     'name' => 'المدير العام',
-                    'email' => 'admin@watheeq.jo',
-                    'password' => Hash::make('admin123'),
+                    'email' => 'admin@dctechjo.com',
+                    'password' => Hash::make('Omar1992$$'),
                     'role' => 'admin',
                     'role_name_ar' => 'مدير النظام (Super Admin)',
                     'enabled_modules' => json_encode([
