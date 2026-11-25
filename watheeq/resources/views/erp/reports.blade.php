@@ -6,10 +6,10 @@
 @php
     $trialBalance = $trialBalance ?? $accounts ?? collect();
     $totalRevenue = $totalRevenue ?? $totalSales ?? 0;
-    $totalExpenses = $totalExpenses ?? 12500;
+    $totalExpenses = $totalExpenses ?? 0;
     $netProfit = $netProfit ?? ($totalRevenue - $totalExpenses);
-    $totalAssets = $totalAssets ?? 80114.30;
-    $totalLiabilities = $totalLiabilities ?? 16000.50;
+    $totalAssets = $totalAssets ?? 0;
+    $totalLiabilities = $totalLiabilities ?? 0;
 @endphp
 <div class="space-y-6" dir="rtl">
 
