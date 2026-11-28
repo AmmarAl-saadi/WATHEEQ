@@ -43,7 +43,7 @@ Route::post('/accounts', [ErpController::class, 'storeAccount'])->name('erp.acco
 Route::get('/journals/create-editor', [ErpController::class, 'journalEditor'])->name('erp.journals.editor');
 Route::post('/journals', [ErpController::class, 'storeJournal'])->name('erp.journals.store');
 
-// Stock Movements & Count
+// Stock Movements, Count & Transfers
 Route::get('/products', [ErpController::class, 'products'])->name('erp.products');
 Route::post('/products', [ErpController::class, 'storeProduct'])->name('erp.products.store');
 Route::get('/products/create-editor', [ErpController::class, 'productEditor'])->name('erp.products.editor');
@@ -51,6 +51,10 @@ Route::get('/stock-count', [ErpController::class, 'stockCount'])->name('erp.stoc
 Route::post('/stock-count', [ErpController::class, 'reconcileStockCount'])->name('erp.stock_count.reconcile');
 Route::get('/dispatches', [ErpController::class, 'dispatches'])->name('erp.dispatches');
 Route::post('/dispatches', [ErpController::class, 'storeDispatch'])->name('erp.dispatches.store');
+Route::get('/transfers', [ErpController::class, 'stockTransfer'])->name('erp.transfers');
+Route::post('/transfers', [ErpController::class, 'storeStockTransfer'])->name('erp.transfers.store');
+Route::get('/manufacturing', [ErpController::class, 'manufacturingVoucher'])->name('erp.manufacturing');
+Route::post('/manufacturing', [ErpController::class, 'storeManufacturingVoucher'])->name('erp.manufacturing.store');
 
 // Contacts & Statement
 Route::get('/contacts', [ErpController::class, 'contacts'])->name('erp.contacts');
@@ -73,6 +77,14 @@ Route::post('/fixed-assets', [ErpController::class, 'storeFixedAsset'])->name('e
 // Page 3: Hesabate HR & Sub-Screens
 Route::get('/hr', [ErpController::class, 'hr'])->name('erp.hr');
 Route::post('/hr/employees', [ErpController::class, 'storeEmployee'])->name('erp.hr.store');
+Route::get('/hr/employee-editor/{id?}', [ErpController::class, 'employeeEditor'])->name('erp.hr.employee_editor');
+Route::post('/hr/employee-editor', [ErpController::class, 'storeEmployeeEditor'])->name('erp.hr.employee_editor.store');
+Route::get('/hr/vouchers/{type?}', [ErpController::class, 'employeeVoucher'])->name('erp.hr.employee_voucher');
+Route::post('/hr/vouchers', [ErpController::class, 'storeEmployeeVoucher'])->name('erp.hr.employee_voucher.store');
+Route::get('/hr/settings', [ErpController::class, 'hrSettings'])->name('erp.hr.settings');
+Route::post('/hr/settings', [ErpController::class, 'storeHrSettings'])->name('erp.hr.settings.store');
+Route::get('/hr/termination', [ErpController::class, 'employeeTermination'])->name('erp.hr.termination');
+Route::post('/hr/termination', [ErpController::class, 'storeEmployeeTermination'])->name('erp.hr.termination.store');
 Route::get('/hr/salary-editor', [ErpController::class, 'salaryEditor'])->name('erp.hr.salary_editor');
 Route::post('/hr/salary-editor', [ErpController::class, 'storeSalaryEditor'])->name('erp.hr.salary_editor.store');
 Route::get('/hr/tax-exempt', [ErpController::class, 'taxExemptEditor'])->name('erp.hr.tax_exempt');
@@ -93,9 +105,17 @@ Route::get('/pos/tables', [ErpController::class, 'posTables'])->name('erp.pos.ta
 Route::post('/pos/tables', [ErpController::class, 'storePosTable'])->name('erp.pos.tables.store');
 Route::get('/pos/shifts', [ErpController::class, 'posShifts'])->name('erp.pos.shifts');
 Route::post('/pos/shifts/close', [ErpController::class, 'closePosShift'])->name('erp.pos.shifts.close');
+Route::get('/pos/options', [ErpController::class, 'posOptions'])->name('erp.pos.options');
+Route::post('/pos/options', [ErpController::class, 'storePosOptions'])->name('erp.pos.options.store');
+Route::get('/pos/reports', [ErpController::class, 'posReports'])->name('erp.pos.reports');
+Route::get('/admin/permissions', [ErpController::class, 'adminPermissions'])->name('erp.admin.permissions');
+Route::post('/admin/permissions', [ErpController::class, 'storeAdminPermissions'])->name('erp.admin.permissions.store');
 
 // Page 6: Reports
 Route::get('/reports', [ErpController::class, 'reports'])->name('erp.reports');
+Route::get('/reports/customer-statement', [ErpController::class, 'reportCustomerStatement'])->name('erp.reports.customer_statement');
+Route::get('/reports/stock-ledger', [ErpController::class, 'reportStockLedger'])->name('erp.reports.stock_ledger');
+Route::get('/reports/cheques', [ErpController::class, 'reportCheques'])->name('erp.reports.cheques');
 Route::get('/reports/export-excel', [ErpController::class, 'exportExcel'])->name('erp.reports.excel');
 
 // Utilities: Notepad, Phonebook, Customizer
@@ -128,5 +148,26 @@ Route::delete('/admin/users/{id}', [ErpController::class, 'deleteUser'])->name('
 
 // Seamless Hardware Barcode & QR Code Real-Time Lookup Engine
 Route::get('/api/products/lookup', [ErpController::class, 'lookupProductByBarcode'])->name('erp.products.lookup');
+
+// Video 7: Print Options Customizer (14_6i.php), System Preferences (14_3i.php), and Installments (6_5_1i.php)
+Route::get('/settings/print-options', [ErpController::class, 'printOptions'])->name('erp.settings.print_options');
+Route::post('/settings/print-options', [ErpController::class, 'savePrintOptions'])->name('erp.settings.print_options.save');
+Route::get('/settings/preferences', [ErpController::class, 'preferences'])->name('erp.settings.preferences');
+Route::post('/settings/preferences', [ErpController::class, 'savePreferences'])->name('erp.settings.preferences.save');
+Route::get('/vouchers/installments', [ErpController::class, 'installmentVouchers'])->name('erp.vouchers.installments');
+Route::get('/vouchers/installments/create', [ErpController::class, 'createInstallmentVoucher'])->name('erp.vouchers.installments.create');
+Route::post('/vouchers/installments', [ErpController::class, 'storeInstallmentVoucher'])->name('erp.vouchers.installments.store');
+
+// Enterprise & Government-Grade Extensions (PDF Specification Baseline)
+Route::get('/projects', [ErpController::class, 'projects'])->name('erp.projects');
+Route::post('/projects', [ErpController::class, 'storeProject'])->name('erp.projects.store');
+Route::get('/procurement/matching', [ErpController::class, 'threeWayMatching'])->name('erp.procurement.matching');
+Route::post('/procurement/po', [ErpController::class, 'storePo'])->name('erp.procurement.po.store');
+Route::post('/procurement/grn', [ErpController::class, 'storeGrn'])->name('erp.procurement.grn.store');
+Route::get('/assets', [ErpController::class, 'fixedAssetsHub'])->name('erp.assets.hub');
+Route::post('/assets/depreciate', [ErpController::class, 'runAssetDepreciation'])->name('erp.assets.depreciate.run');
+// Route::get('/hr/biometric', [ErpController::class, 'biometricAttendance'])->name('erp.hr.biometric');
+// Route::post('/hr/biometric/import', [ErpController::class, 'importBiometricPunch'])->name('erp.hr.biometric.import');
+Route::get('/ai/assistant', [ErpController::class, 'aiAssistant'])->name('erp.ai.assistant');
 
 

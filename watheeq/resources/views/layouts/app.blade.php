@@ -15,6 +15,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 RTL & Bootstrap Icons (Scoped for Enterprise Hubs & Modals) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -86,7 +90,14 @@
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
         }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+        /* Responsive tables and forms modern polish */
+        .card { border-radius: 0.75rem !important; }
+        .form-control, .form-select { border-radius: 0.5rem !important; }
+        .btn { border-radius: 0.5rem !important; }
+        .table thead th { background-color: #F1F5F9 !important; color: #1E293B !important; font-weight: 700 !important; }
+        /* Fix modal backdrops and layout flow */
+        .modal-backdrop { z-index: 1040 !important; }
+        .modal { z-index: 1050 !important; }
 
         /* ══════════════════════════════════════════════════════════════════
            WATHEEQ UNIVERSAL ENTERPRISE PRINT ENGINE
@@ -308,8 +319,8 @@
                             </div>
                         @else
                             <div class="px-3.5 py-2 border-b border-gray-100 bg-gray-50/70">
-                                <div class="font-bold text-gray-800">{{ $currentUser->name }}</div>
-                                <div class="text-[10px] text-gray-500">{{ $currentUser->role_name_ar }}</div>
+                                <div class="font-bold text-gray-800">{{ $currentUser->name ?? 'المستخدم' }}</div>
+                                <div class="text-[10px] text-gray-500">{{ $currentUser->role_name_ar ?? 'مدير' }}</div>
                             </div>
                         @endif
                         <div class="border-t border-gray-100 p-2 bg-gray-50 space-y-1.5">
@@ -397,6 +408,32 @@
                         الفوترة الوطنية
                     </a>
                 @endif
+
+                <!-- Hesabate 7: Print Options Customizer & Preferences -->
+                <a href="{{ route('erp.settings.print_options') }}" class="px-3.5 py-2 rounded-lg transition {{ request()->routeIs('erp.settings.print_options*') ? 'bg-amber-600 text-white shadow' : 'text-amber-800 bg-amber-50 hover:bg-amber-100' }}" title="تخصيص كامل لأدق تفاصيل طباعة الفواتير والسندات">
+                    خيارات الطباعة
+                </a>
+                <a href="{{ route('erp.settings.preferences') }}" class="px-3.5 py-2 rounded-lg transition {{ request()->routeIs('erp.settings.preferences*') ? 'bg-[#1F2E4A] text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}" title="خصائص ومحددات البرنامج">
+                    خصائص البرنامج
+                </a>
+                <a href="{{ route('erp.vouchers.installments') }}" class="px-3.5 py-2 rounded-lg transition {{ request()->routeIs('erp.vouchers.installments*') ? 'bg-[#1F2E4A] text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}" title="سند الأقساط وجدولتها">
+                    سند الأقساط
+                </a>
+
+                <!-- Enterprise & Government Extensions (PDF Baseline) -->
+                <a href="{{ route('erp.projects') }}" class="px-3.5 py-2 rounded-lg transition {{ request()->routeIs('erp.projects*') ? 'bg-[#1F2E4A] text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}" title="المشاريع والعطاءات والربحية">
+                    المشاريع
+                </a>
+                <a href="{{ route('erp.procurement.matching') }}" class="px-3.5 py-2 rounded-lg transition {{ request()->routeIs('erp.procurement*') ? 'bg-[#1F2E4A] text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}" title="المطابقة الثلاثية للمشتريات">
+                    المطابقة الثلاثية
+                </a>
+                <a href="{{ route('erp.assets.hub') }}" class="px-3.5 py-2 rounded-lg transition {{ request()->routeIs('erp.assets*') ? 'bg-[#1F2E4A] text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}" title="الأصول الثابتة والإهلاك">
+                    الأصول الثابتة
+                </a>
+                <a href="{{ route('erp.ai.assistant') }}" class="px-3.5 py-2 rounded-lg transition {{ request()->routeIs('erp.ai*') ? 'bg-indigo-600 text-white shadow' : 'text-indigo-800 bg-indigo-50 hover:bg-indigo-100' }}" title="المساعد المالي الذكي للمدير">
+                    المساعد الذكي (AI)
+                </a>
+
 
                 <div class="mr-auto">
                     <a href="{{ route('erp.admin') }}" class="px-3 py-1.5 rounded-lg font-bold border border-[#1F2E4A]/30 transition {{ request()->routeIs('erp.admin') || request()->routeIs('erp.customizer') ? 'bg-[#1F2E4A] text-white' : 'bg-[#1F2E4A]/10 text-[#343A40] hover:bg-[#1F2E4A]/20' }}">

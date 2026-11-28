@@ -329,7 +329,7 @@
                             <span class="font-bold text-xs text-gray-900 block">• ${r.title}</span>
                             <span class="text-[10px] text-gray-400 block">${r.desc}</span>
                         </div>
-                        <a href="{{ route('erp.reports.excel') }}" class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded text-[10px] font-bold">عرض</a>
+                        <a href="${r.url || '{{ route('erp.reports.excel') }}'}" class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded text-[10px] font-bold">عرض</a>
                     </div>
                 `).join('')}
             </div>

@@ -19,7 +19,13 @@
             <a href="{{ route('erp.pos') }}" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm">
                 فتح شاشة كاشير POS المباشرة
             </a>
-            <a href="{{ route('erp.pos.shifts') }}" class="px-4 py-2.5 bg-[#1F2E4A] hover:bg-[#343A40] text-white rounded-xl text-xs font-bold transition shadow-sm">
+            <a href="{{ route('erp.pos.options') }}" class="px-4 py-2.5 bg-[#1F2E4A] hover:bg-[#343A40] text-white rounded-xl text-xs font-bold transition shadow-sm">
+                ⚙️ خيارات وإعدادات POS (حساباتي)
+            </a>
+            <a href="{{ route('erp.pos.reports') }}" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-sm">
+                📊 كشف فواتير POS
+            </a>
+            <a href="{{ route('erp.pos.shifts') }}" class="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl text-xs font-bold transition border">
                 تسليم واستلام عهدة الوردية
             </a>
         </div>

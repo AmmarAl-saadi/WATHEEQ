@@ -2,10 +2,27 @@
 watheeq/vendor/
 watheeq/node_modules/
 
-# Environment
+# Environment & Sensitive Files
+.env
+.env.*
 watheeq/.env
-watheeq/.env.backup
-watheeq/.env.production
+watheeq/.env.*
+*.sqlite
+database/database.sqlite
+
+# Media, Screen Recordings & Video Frames
+*.mp4
+*.m4v
+*.avi
+*.zip
+*.tar.gz
+frames_*/
+frames_analysis/
+frames_analysis2/
+
+# Temporary SQL Dumps & Exports
+*.sql
+exact_hash.txt
 
 # Storage & Logs
 watheeq/storage/*.key

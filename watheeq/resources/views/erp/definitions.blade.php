@@ -81,6 +81,14 @@
                     <span>• سند تعديل أسعار البيع</span>
                     <span class="text-[9px] text-amber-600 font-bold">محطة عمل</span>
                 </a>
+                <a href="{{ route('erp.transfers') }}" class="block p-1 rounded hover:bg-gray-50 flex justify-between items-center">
+                    <span>• إرسالية مناقلة بين المخازن</span>
+                    <span class="text-[9px] text-[#1F2E4A] font-bold">تحويل</span>
+                </a>
+                <a href="{{ route('erp.manufacturing') }}" class="block p-1 rounded hover:bg-gray-50 flex justify-between items-center">
+                    <span>• سند إنتاج وتصنيع</span>
+                    <span class="text-[9px] text-emerald-700 font-bold">تصنيع</span>
+                </a>
                 <a href="{{ route('erp.products') }}" class="block p-1 rounded hover:bg-gray-50">• إعدادات المخزون</a>
                 <a href="{{ route('erp.products') }}" class="block p-1 rounded hover:bg-gray-50">• أرصدة المخزون الابتدائية</a>
                 <a href="{{ route('erp.products') }}" class="block p-1 rounded hover:bg-gray-50">• تعديل أسعار التكلفة للقيم صفر</a>

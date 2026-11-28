@@ -16,7 +16,10 @@
             <p class="text-xs text-gray-500 mt-0.5">تحكم كامل وسهل بواجهات كل مستخدم بدون أي حاجة لخبرة تقنية أو برمجية</p>
         </div>
         <div class="flex gap-2.5">
-            <button onclick="document.getElementById('newUserModal').classList.remove('hidden')" class="px-4 py-2 bg-[#1F2E4A] hover:bg-[#343A40] text-white rounded-xl text-xs font-bold transition shadow-sm">
+            <a href="{{ route('erp.admin.permissions') }}" class="px-4 py-2 bg-[#1F2E4A] hover:bg-[#343A40] text-white rounded-xl text-xs font-bold transition shadow-sm">
+                🛡️ مصفوفة الصلاحيات (حساباتي Manage)
+            </a>
+            <button onclick="document.getElementById('newUserModal').classList.remove('hidden')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm">
                 إضافة مستخدم جديد
             </button>
             <a href="{{ route('erp.jofotara.hub') }}" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl text-xs font-bold transition border">
@@ -31,7 +34,7 @@
             حسابات المستخدمين ({{ $users->count() }})
         </button>
         <button type="button" onclick="switchAdminTab('myInterfaceTab')" id="tabBtn_myInterfaceTab" class="admin-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-gray-100 text-gray-700 hover:bg-gray-200">
-            تخصيص واجهتي الحالية ({{ $currentUser->name }})
+            تخصيص واجهتي الحالية ({{ $currentUser->name ?? 'المدير' }})
         </button>
         <button type="button" onclick="switchAdminTab('companyTab')" id="tabBtn_companyTab" class="admin-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-gray-100 text-gray-700 hover:bg-gray-200">
             بيانات المنشأة والضريبة
@@ -116,15 +119,15 @@
 
     <!-- ── TAB 2: My Current Interface Customizer ── -->
     <div id="myInterfaceTab" class="admin-tab-pane hidden space-y-6">
-        <form action="{{ route('erp.admin.users.update', $currentUser->id) }}" method="POST" class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-6">
+        <form action="{{ route('erp.admin.users.update', $currentUser->id ?? 1) }}" method="POST" class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-6">
             @csrf
             <div class="border-b pb-4 flex justify-between items-center">
                 <div>
-                    <h2 class="text-base font-bold text-[#1F2E4A]">تخصيص الواجهة للمستخدم الحالي: {{ $currentUser->name }}</h2>
+                    <h2 class="text-base font-bold text-[#1F2E4A]">تخصيص الواجهة للمستخدم الحالي: {{ $currentUser->name ?? 'المدير' }}</h2>
                     <p class="text-xs text-gray-500">حدد بالضبط التبويبات والأدوات التي ترغب بظهورها في شاشتك اليومية</p>
                 </div>
-                <input type="hidden" name="name" value="{{ $currentUser->name }}">
-                <input type="hidden" name="role_name_ar" value="{{ $currentUser->role_name_ar }}">
+                <input type="hidden" name="name" value="{{ $currentUser->name ?? 'المدير' }}">
+                <input type="hidden" name="role_name_ar" value="{{ $currentUser->role_name_ar ?? 'مدير النظام' }}">
                 <button type="submit" class="px-5 py-2 bg-[#1F2E4A] hover:bg-[#343A40] text-white rounded-xl text-xs font-bold transition shadow-sm">
                     حفظ واجهتي المخصصة فوراً
                 </button>

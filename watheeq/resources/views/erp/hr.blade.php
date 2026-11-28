@@ -16,15 +16,24 @@
             <p class="text-xs text-gray-500">بطاقات الموظفين، سندات الرواتب، اقتطاعات الضمان الاجتماعي الأردني، والإعفاءات الضريبية</p>
         </div>
         <div class="flex gap-2 flex-wrap">
-            <a href="{{ route('erp.hr.salary_editor') }}" class="px-4 py-2 bg-[#1F2E4A] hover:bg-[#343A40] text-white rounded-xl text-xs font-bold transition shadow-sm">
-                + محطة تعديل راتب
+            <a href="{{ route('erp.hr.employee_editor') }}" class="px-4 py-2 bg-[#1F2E4A] hover:bg-[#343A40] text-white rounded-xl text-xs font-bold transition shadow-sm">
+                + بطاقة موظف جديدة (حساباتي)
             </a>
-            <a href="{{ route('erp.hr.tax_exempt') }}" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm">
-                + سند الإعفاءات
+            <a href="{{ route('erp.hr.employee_voucher', ['type' => 'payment']) }}" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm">
+                + سندات الموظفين المالية
             </a>
-            <button onclick="document.getElementById('newEmpModal').classList.remove('hidden')" class="px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-xl text-xs font-bold transition">
-                + إضافة موظف جديد
-            </button>
+            <a href="{{ route('erp.hr.settings') }}" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-sm">
+                ⚙️ خصائص الدوام والإجازات
+            </a>
+            <a href="{{ route('erp.hr.termination') }}" class="px-3.5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition shadow-sm">
+                إنهاء خدمة
+            </a>
+            <a href="{{ route('erp.hr.salary_editor') }}" class="px-3.5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl text-xs font-bold transition border">
+                محطة تعديل راتب
+            </a>
+            <a href="{{ route('erp.hr.tax_exempt') }}" class="px-3.5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl text-xs font-bold transition border">
+                سند الإعفاءات
+            </a>
         </div>
     </div>
 
